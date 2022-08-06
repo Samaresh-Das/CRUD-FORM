@@ -1,0 +1,33 @@
+<%- layout('layouts/template') %>
+<form action="/comments" method="post">
+  <div class="mb-4">
+    <label for="username" class="form-label">Username</label>
+    <input
+      type="text"
+      class="form-control"
+      id="username"
+      placeholder="username"
+      name="comment[username]"
+    />
+  </div>
+  <div class="mb-4">
+    <label for="email" class="form-label">Email address</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      name="comment[email]"
+      placeholder="name@example.com"
+    />
+  </div>
+  <div class="mb-4">
+    <label for="comment" class="form-label">Comment</label>
+    <textarea
+      class="form-control"
+      id="comment"
+      rows="2"
+      name="comment[comments]"
+    ></textarea>
+  </div>
+  <button class="btn btn-success">Submit</button>
+</form>

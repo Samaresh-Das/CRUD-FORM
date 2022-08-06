@@ -1,0 +1,20 @@
+<%- layout('layouts/template') %>
+<div class="container">
+  <div class="card">
+    <div class="card-header">Quote</div>
+    <div class="card-body">
+      <% for(c of comments) {%>
+      <blockquote class="blockquote mb-0">
+        <p>A well-known quote, contained in a blockquote element.</p>
+        <footer class="blockquote-footer">
+          <cite title="Source Title">author <%= c.usernam %> </cite>
+        </footer>
+        <a href="#" class="btn btn-primary">Edit</a>
+        <form action="" class="d-inline">
+          <button class="btn btn-danger">Delete</button>
+        </form>
+      </blockquote>
+      <% } %>
+    </div>
+  </div>
+</div>
