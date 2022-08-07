@@ -3,11 +3,11 @@
   <div class="card">
     <div class="card-header">Quote</div>
     <div class="card-body">
-      <% for(c of comments) {%>
+      <% for(let c of comment) {%>
       <blockquote class="blockquote mb-0">
         <p>A well-known quote, contained in a blockquote element.</p>
         <footer class="blockquote-footer">
-          <cite title="Source Title">author <%= c.usernam %> </cite>
+          <cite title="Source Title">author <%= c.username %> </cite>
         </footer>
         <a href="#" class="btn btn-primary">Edit</a>
         <form action="" class="d-inline">

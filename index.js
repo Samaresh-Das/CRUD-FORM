@@ -38,14 +38,15 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("/comments", (req, res) => {
-  res.render("comments");
+app.get("/comments", async (req, res) => {
+  const comment = await Comments.find({});
+  res.render("comments", { comment });
 });
 
 app.post("/comments", async (req, res) => {
   const comment = new Comments(req.body.comment);
   await comment.save();
-  res.redirect("/comments", { comments: comment._id });
+  res.redirect("/comments");
 });
 
 app.get("/form", (req, res) => {
