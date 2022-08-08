@@ -49,6 +49,31 @@ app.post("/comments", async (req, res) => {
   res.redirect("/comments");
 });
 
+app.get("/comments/:id/edit", async (req, res) => {
+  //edit comment form
+  const { id } = req.params;
+  const foundComment = await Comments.findById(id);
+  if (!foundComment) {
+    return res.redirect("/comments");
+  }
+  res.render("edit", { foundComment });
+});
+
+app.put("/comments/:id", async (req, res) => {
+  //edit post
+  const { id } = req.params;
+  await Comments.findByIdAndUpdate(id, {
+    ...req.body.comment,
+  });
+  res.redirect("/comments");
+});
+
+app.delete("/comments/:id", async (req, res) => {
+  const { id } = req.params;
+  await Comments.findByIdAndDelete(id);
+  res.redirect("/comments");
+});
+
 app.get("/form", (req, res) => {
   res.render("form");
 });

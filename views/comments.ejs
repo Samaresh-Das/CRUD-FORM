@@ -5,12 +5,18 @@
     <div class="card-body">
       <% for(let c of comment) {%>
       <blockquote class="blockquote mb-0">
-        <p>A well-known quote, contained in a blockquote element.</p>
+        <p><%= c.comments %></p>
         <footer class="blockquote-footer">
           <cite title="Source Title">author <%= c.username %> </cite>
         </footer>
-        <a href="#" class="btn btn-primary">Edit</a>
-        <form action="" class="d-inline">
+        <a class="btn btn-primary" href="/comments/<%= c._id %>/edit "
+          >Edit Comment</a
+        >
+        <form
+          action="/comments/<%= c._id %>?_method=DELETE"
+          method="post"
+          class="d-inline"
+        >
           <button class="btn btn-danger">Delete</button>
         </form>
       </blockquote>

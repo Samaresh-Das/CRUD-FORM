@@ -1,0 +1,46 @@
+<%- layout('layouts/template') %>
+<form
+  action="/comments/<%= foundComment._id %>?_method=PUT"
+  method="post"
+  class="validated-form"
+  novalidate
+>
+  <div class="mb-4">
+    <label for="comment" class="form-label">Edit Comment</label>
+    <textarea
+      class="form-control"
+      id="comment"
+      rows="2"
+      name="comment[comments]"
+      value="<%= foundComment.comments %>"
+      required
+    ></textarea>
+    <div class="invalid-feedback">Comments cannot be empty</div>
+  </div>
+  <button class="btn btn-success">Submit</button>
+</form>
+
+<script>
+  (() => {
+    "use strict";
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll(".validated-form");
+
+    // Loop over them and prevent submission
+    Array.from(forms).forEach((form) => {
+      form.addEventListener(
+        "submit",
+        (event) => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add("was-validated");
+        },
+        false
+      );
+    });
+  })();
+</script>
