@@ -16,6 +16,10 @@ const commentsSchema = new Schema({
     type: String,
     required: true,
   },
+  person: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 module.exports = mongoose.model("Comments", commentsSchema);

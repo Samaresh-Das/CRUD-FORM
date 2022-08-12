@@ -1,0 +1,58 @@
+<%- layout('layouts/template') %>
+
+<h1>Register</h1>
+<form action="/register" method="post" class="validated-form" novalidate>
+  <div class="mb-3">
+    <label for="username" class="form-label">Username</label>
+    <input
+      type="text"
+      id="username"
+      name="username"
+      class="form-control"
+      required
+    />
+    <div class="invalid-feedback">Please enter an username</div>
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">E-mail</label>
+    <input type="email" id="email" name="email" class="form-control" required />
+    <div class="invalid-feedback">Please enter a valid email</div>
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      class="form-control"
+      required
+    />
+    <div class="invalid-feedback">Please enter a password</div>
+  </div>
+  <button class="btn btn-success">Register</button>
+</form>
+
+<script>
+  (() => {
+    "use strict";
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll(".validated-form");
+
+    // Loop over them and prevent submission
+    Array.from(forms).forEach((form) => {
+      form.addEventListener(
+        "submit",
+        (event) => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add("was-validated");
+        },
+        false
+      );
+    });
+  })();
+</script>
